@@ -1,13 +1,24 @@
 ---
-title: "About"
-image: profile.jpg
+title: "About me"
+image: profilepic.jpg
 about:
   template: jolla
   links:
     - icon: github
       text: Github
-      href: https://github.com/etc5523-2022
+      href: https://github.com/arisarath
+    - icon: facebook
+      text: Facebook
+      href: https://www.facebook.com/share/19knrycbiK/?mibextid=wwXIfr
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/arisara-th/
 
 ---
 
-This is a blog template for the ETC5523 Communicating with Data assessment at Monash University.
+# Arisara Therdthianwong
+I am a Master’s student in Business, specializing Data analytics at Monash University. 
+I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers.
+Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany.
+I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis.
+
