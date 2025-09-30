@@ -6,7 +6,7 @@ categories: [healthcare, public-health, HAIs, Germany]
 ---
 
 ## The Problem: When Hospitals Become Sources of Infection
-*Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection.* This is not a rare occurrence since **1 of every 25 patients** in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. In 2011, HAIs resulted in approximately **487,000 cases and claimed over 16,000 lives** (Zacher, 2019). To be exactly, the burden of HAIs causes more death than from influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk. 
+*Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection.* This is not a rare occurrence since **1 of every 25 patients** in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. In 2011, HAIs resulted in approximately **487,000 cases and claimed over 16,000 lives** (Zacher, 2019). To be exact, the burden of HAIs causes more death than from influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk. 
 
 *What’s even more shocking?* Research found that many of these infections can be prevented with basic changes in hygiene and hospital procedures.
 
@@ -24,16 +24,73 @@ We examined two datasets for Germany:
 ### What was tracked?
 BIG 5 types of HAIs
 
-- Clostridioides difficile (CDI)
 -	Hospital-acquired pneumonia (HAP)
+-	Surgical site infections (SSI)
 -	Bloodstream infections (BSI)
 -	Urinary tract infections (UTI)
--	Surgical site infections (SSI)
+- Clostridioides difficile (CDI)
 
 ### What was measured?
 -	Total number of cases
 -	Deaths linked to infection
 -	Years lost to disability or life (YLDs, YLLs, and summed up as DALYs)
+
+## Analysis
+
+```{r}
+#| label: tbl-hais
+#| tbl-cap: Estimated annual burden of five healthcare-associated infections (HAIs) in Germany, 2011.
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gt)
+library(dplyr)
+
+hais_data <- data.frame(
+  Type = c("Pneumonia (HAP)",
+                "Surgical site (SSI)",
+                "Bloodstream (BSI)",
+                "Urinary tract (UTI)",
+                "Clostridioides difficile (CDI)",
+                "Total"),
+  Cases = c(106586,93222,26976,214150,36002,478222),
+  Deaths = c(3968,2328,3905,3664,1917,16245),
+  DALYs = c(69508,28842,58350,66701,20890,248920)
+)
+
+hais_desc <- hais_data |>
+  filter(Type != "Total") |>
+  arrange(desc(Cases)) |>
+  bind_rows(hais_data |> filter(Type == "Total"))
+
+gt(hais_desc) |>
+  tab_header(title = "Annual burden of five HAIs in Germany",
+             subtitle = "Point estimates only") |>
+  tab_source_note("Source: 2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey") |>
+  cols_label(Type = "Type of HAI",
+             Cases = "Number of Cases",
+             Deaths = "Number of Deaths",
+             DALYs = "Number of DALYs") |>
+  tab_style(style = list(cell_fill(color = "#2c5f8d"),
+                         cell_text(color = "white", 
+                                   weight = "bold", 
+                                   size = px(13))),
+                         locations = list(
+                           cells_column_labels(),
+                           cells_column_spanners()
+                         )
+  ) |>
+  tab_style(style = list(cell_fill(color="#e0f7fa"),
+                         cell_text(color="#2c5f8d")),
+                         locations = cells_body(columns = everything(), 
+                                                rows = Type == "Total")) |>
+  tab_style(style = cell_text(weight = "bold", size = px(13)),
+            locations = cells_body(columns = Type)) |>
+  fmt_number(columns = c(Cases, Deaths, DALYs),
+             decimals = 0,
+             use_seps = TRUE)
+```
 
 
 ![](thumbnail.jpg)
