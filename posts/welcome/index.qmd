@@ -37,9 +37,11 @@ BIG 5 types of HAIs
 
 ## Analysis
 
+### Explore frequency of HAIs
+
 ```{r}
 #| label: tbl-hais
-#| tbl-cap: Estimated annual burden of five healthcare-associated infections (HAIs) in Germany, 2011.
+#| tbl-cap: UTIs are the most frequent HAI in Germany, while HAP and BSI drive most of the overall burden.
 #| echo: false
 #| message: false
 #| warning: false
@@ -67,7 +69,7 @@ hais_desc <- hais_data |>
 gt(hais_desc) |>
   tab_header(title = "Annual burden of five HAIs in Germany",
              subtitle = "Point estimates only") |>
-  tab_source_note("Source: 2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey") |>
+  tab_source_note(source_note = md("Source: 2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey")) |>
   cols_label(Type = "Type of HAI",
              Cases = "Number of Cases",
              Deaths = "Number of Deaths",
@@ -75,7 +77,7 @@ gt(hais_desc) |>
   tab_style(style = list(cell_fill(color = "#2c5f8d"),
                          cell_text(color = "white", 
                                    weight = "bold", 
-                                   size = px(13))),
+                                   size = px(14))),
                          locations = list(
                            cells_column_labels(),
                            cells_column_spanners()
@@ -85,12 +87,63 @@ gt(hais_desc) |>
                          cell_text(color="#2c5f8d")),
                          locations = cells_body(columns = everything(), 
                                                 rows = Type == "Total")) |>
-  tab_style(style = cell_text(weight = "bold", size = px(13)),
+  tab_style(style = cell_text(weight = "bold", size = px(14)),
             locations = cells_body(columns = Type)) |>
+  tab_style(style = cell_text(color = "gray50", size = px(10)),
+    locations = cells_source_notes()) |>
   fmt_number(columns = c(Cases, Deaths, DALYs),
              decimals = 0,
              use_seps = TRUE)
 ```
+
+As shown in @tbl-hais, healthcare-associated infections (HAIs) remain a major health concern in Germany. In 2011, there were 478,222 cases resulting in 16,245 deaths and 248,920 DALYs. Urinary tract infections were the most common HAI with 214,150 cases, accounting for 45% of all infections. Pneumonia followed with 106,586 cases, while bloodstream infections were relatively uncommon with 26,976 cases. But these only show the number of occurrence not the critical severity.
+
+### So what's HAIs severity?
+
+```{r}
+#| label: fig-severity
+#| fig-cap: "The severity analysis: Pneumonia and Bloodstream dominates Germany infection"
+#| echo: false
+#| message: false
+#| warning: false
+
+library(ggplot2)
+
+severity_data <- data.frame(
+  type = c("HAP", "SSI", "BSI", "UTI", "CDI"),
+  Cases = c(106586,93222,26976,214150,36002),
+  Deaths = c(3968,2328,3905,3664,1917),
+  DALYs = c(69508,28842,58350,66701,20890)
+)
+
+ggplot(severity_data, aes(x = Cases, y = Deaths, size = DALYs, fill = type)) +
+  geom_point(shape = 21, color = "black", stroke = 1, alpha = 1) +
+  geom_text(aes(label = type), color = "black", 
+            fontface = "bold", size = 4) +
+  scale_fill_manual(values = c("BSI" = "#DC267F",
+      "HAP" = "#FE6100",
+      "CDI" = "#FFB000",
+      "SSI" = "#009988",
+      "UTI" = "#33BBEE"),
+      guide = "none")+
+  scale_size_continuous(range = c(8,28), guide = "none")+
+  scale_x_continuous(labels = scales::comma, limits = c(0, 250000), expand = c(0.025,0)) +
+  scale_y_continuous(labels = scales::comma, limits = c(0, 5000)) +
+  labs(x = "Annual Number of Cases",
+       y = "Annual Attributable Deaths",
+       title = "Severity of HAIs",
+       caption = "Source: 2011 ECDC Point Prevalence Survey") +
+  theme_minimal() + 
+  theme(
+    panel.grid.major = element_line(color = "gray90", linewidth = 0.5),
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1),
+    plot.title = element_text(face = "bold", size=14, hjust = 0.5),
+    plot.caption = element_text(hjust = 0, color = "gray40", size = 10),
+    axis.title = element_text(face = "bold", size = 12)
+  )
+```
+
 
 
 ![](thumbnail.jpg)
