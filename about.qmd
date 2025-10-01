@@ -16,7 +16,7 @@ about:
 
 ---
 
-# Arisara Therdthianwong
+## Arisara Therdthianwong
 I am a Master’s student in Business, specializing Data analytics at Monash University. 
 I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers.
 Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany.

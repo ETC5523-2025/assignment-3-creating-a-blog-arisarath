@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About me",
     "section": "",
-    "text": "Arisara Therdthianwong\nI am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
+    "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -46,7 +46,7 @@
     "href": "posts/welcome/index.html#conclusion",
     "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
     "section": "Conclusion",
-    "text": "Conclusion\nHealthcare-associated infections (HAIs) impose a substantial burden Germany’s healthcare system, with nearly 478,000 cases, over 16,000 deaths, and 249,000 DALYs annually. This analysis reveals an insight that reshaping prevention strategies is a MUST.\nPneumonia and bloodstream infections should be prioritise. While urinary infections contribute the most cases, they cause far fewer deaths perinfection. This pattern suggests that prevention strategies should focus on saving lives and reducing disability, not just lowering case numbers.\nGermany’s high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention more urgent. According to Zacher et al. (2019), 20-30% of HAIs are preventable through better hygiene protocols and procedures. Therefore, Germany should focus on allocating resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency and patient safety and redundant cost."
+    "text": "Conclusion\nHealthcare-associated infections (HAIs) impose a substantial burden Germany’s healthcare system, with nearly 478,000 cases, over 16,000 deaths, and 249,000 DALYs annually. This analysis reveals an insight that reshaping prevention strategies is a MUST.\nPneumonia and bloodstream infections should be prioritise. While urinary infections contribute the most cases, they cause far fewer deaths per infection. This pattern suggests that prevention strategies should focus on saving lives and reducing disability, not just lowering case numbers.\nGermany’s high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention more urgent. According to Zacher et al. (2019), 20-30% of HAIs are preventable through better hygiene protocols and procedures. Therefore, Germany should focus on allocating resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency and patient safety and redundant cost."
   },
   {
     "objectID": "posts/welcome/index.html#references",
@@ -61,5 +61,12 @@
     "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
     "section": "",
     "text": "Germany faces nearly 480,000 healthcare-associated infections annually, causing over 16,000 deaths. The key insight: the most common infections aren’t the most deadly. Bloodstream infections kill at 8× the rate of urinary tract infections despite being far rarer. Prevention should target high-severity infections (pneumonia and bloodstream) rather than just the most frequent ones."
+  },
+  {
+    "objectID": "about.html#arisara-therdthianwong",
+    "href": "about.html#arisara-therdthianwong",
+    "title": "About me",
+    "section": "",
+    "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
   }
 ]

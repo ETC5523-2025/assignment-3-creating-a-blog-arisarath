@@ -100,6 +100,10 @@ gt(hais_desc) |>
              Cases = "Number of Cases",
              Deaths = "Number of Deaths",
              DALYs = "Number of DALYs") |>
+  tab_style(style = cell_text(color = "#023047", 
+                              weight = "bold", 
+                              size = px(18)),
+            locations = cells_title(groups = "title")) |>
   tab_style(style = list(cell_fill(color = "#2c5f8d"),
                          cell_text(color = "white", 
                                    weight = "bold", 
@@ -113,13 +117,21 @@ gt(hais_desc) |>
                          cell_text(color="#2c5f8d")),
                          locations = cells_body(columns = everything(), 
                                                 rows = Type == "Total")) |>
-  tab_style(style = cell_text(weight = "bold", size = px(14)),
+  tab_style(style = cell_text((color="#2c5f8d"),
+                              weight = "bold", 
+                              size = px(14)),
             locations = cells_body(columns = Type)) |>
-  tab_style(style = cell_text(color = "gray50", size = px(10)),
-    locations = cells_source_notes()) |>
+  tab_style(style = cell_text(color = "gray50", 
+                              size = px(10)),
+            locations = cells_source_notes()) |>
   fmt_number(columns = c(Cases, Deaths, DALYs),
              decimals = 0,
-             use_seps = TRUE)
+             use_seps = TRUE) |>
+  tab_options(
+    table.font.size = px(15),
+    table.width = pct(95),
+    data_row.padding = px(12)
+  )
 ```
 
 As shown in @tbl-hais, healthcare-associated infections (HAIs) remain a major health concern in Germany. In 2011, there were 478,222 cases resulting in 16,245 deaths and 248,920 DALYs. Urinary tract infections were the most common HAI with 214,150 cases, accounting for 45% of all infections. Pneumonia followed with 106,586 cases, while bloodstream infections were rarest with 26,976 cases. But these only show the number of occurrence not the critical severity.

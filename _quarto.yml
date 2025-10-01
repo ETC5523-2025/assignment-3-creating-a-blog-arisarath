@@ -13,7 +13,7 @@ website:
         href: https://github.com/arisarath
 format:
   html:
-    theme: minty
+    theme: united
     css: styles.css
     bibliography: references.bib
     csl: apa.csl
