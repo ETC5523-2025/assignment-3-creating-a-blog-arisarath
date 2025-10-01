@@ -14,15 +14,13 @@ Understanding where these infections occur and which types are most dangerous is
 
 ## The Data
 ### Where the data come from?
-This analysis uses data from **2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey** with BHAI method
+This analysis uses data from **2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey**. The original study by Zacher et al. (2019) applied *Burden of Healthcare-Associated Infections (BHAI)* method to calculate national HAI burden.
 
-We examined two datasets for Germany:
-
--	**Representative sample**: 46 hospitals with 9,626 patients
--	**Convenience sample**: 132 hospitals with 41,539 patients
+We used **Representative sample**: 46 hospitals with 9,626 patients across Germany.
 
 ### What was tracked?
-BIG 5 types of HAIs
+
+5 major types of HAIs:
 
 -	Hospital-acquired pneumonia (HAP)
 -	Surgical site infections (SSI)
@@ -33,22 +31,29 @@ BIG 5 types of HAIs
 ### What was measured?
 -	Total number of cases
 -	Deaths linked to infection
--	Years lost to disability or life (YLDs, YLLs, and summed up as DALYs)
+-	Disability-adjusted life years (DALYs), combining years lost to disability (YLDs) and years lost to life (YLLs)
 
-## Analysis
+### How we prepared the data
 
-### Explore frequency of HAIs
+For this blog post, I work with **published point estimates** from Zacher et al. (2019).
+
+Data preparations:
+
+1. Selecting key variables: From full BHAI dataset, we selected cases, deaths, and DALYs of five major HAI types.
+
+2. Sorting data: Ordering data in descending based on case frequency to highlight the most common infections with total number at the bottom.
+
+3. Tidy data: Structured the published estimates into suitable visualisation.
 
 ```{r}
-#| label: tbl-hais
-#| tbl-cap: UTIs are the most frequent HAI in Germany, while HAP and BSI drive most of the overall burden.
-#| echo: false
+#| echo: true
 #| message: false
-#| warning: false
 
+# Load packages
 library(gt)
 library(dplyr)
 
+# Create data frame
 hais_data <- data.frame(
   Type = c("Pneumonia (HAP)",
                 "Surgical site (SSI)",
@@ -61,10 +66,23 @@ hais_data <- data.frame(
   DALYs = c(69508,28842,58350,66701,20890,248920)
 )
 
+# Sorting data
 hais_desc <- hais_data |>
   filter(Type != "Total") |>
   arrange(desc(Cases)) |>
   bind_rows(hais_data |> filter(Type == "Total"))
+```
+
+## Analysis
+
+### Explore frequency of HAIs
+
+```{r}
+#| label: tbl-hais
+#| tbl-cap: UTIs are the most frequent HAI in Germany, while HAP and BSI drive most of the overall burden.
+#| echo: false
+#| message: false
+#| warning: false
 
 gt(hais_desc) |>
   tab_header(title = "Annual burden of five HAIs in Germany",
@@ -96,13 +114,13 @@ gt(hais_desc) |>
              use_seps = TRUE)
 ```
 
-As shown in @tbl-hais, healthcare-associated infections (HAIs) remain a major health concern in Germany. In 2011, there were 478,222 cases resulting in 16,245 deaths and 248,920 DALYs. Urinary tract infections were the most common HAI with 214,150 cases, accounting for 45% of all infections. Pneumonia followed with 106,586 cases, while bloodstream infections were relatively uncommon with 26,976 cases. But these only show the number of occurrence not the critical severity.
+As shown in @tbl-hais, healthcare-associated infections (HAIs) remain a major health concern in Germany. In 2011, there were 478,222 cases resulting in 16,245 deaths and 248,920 DALYs. Urinary tract infections were the most common HAI with 214,150 cases, accounting for 45% of all infections. Pneumonia followed with 106,586 cases, while bloodstream infections were rarest with 26,976 cases. But these only show the number of occurrence not the critical severity.
 
 ### So what's HAIs severity?
 
 ```{r}
 #| label: fig-severity
-#| fig-cap: "The severity analysis: Pneumonia and Bloodstream dominates Germany infection"
+#| fig-cap: "The severity analysis: Pneumonia and Bloodstream dominates Germany infection."
 #| echo: false
 #| message: false
 #| warning: false
@@ -144,7 +162,15 @@ ggplot(severity_data, aes(x = Cases, y = Deaths, size = DALYs, fill = type)) +
   )
 ```
 
+Frequency doesn't tell the whole story. @fig-severity illustrates this severity patterns through three dimensions: Number of Cases (x-axis), Deaths (y-axis), and DALYs (bubble size). 
 
+Here we see that bloodstream infections (BSI) reaches nearly the same height as Urinary tract infections (UTI) despite being positioned on far left with only 26,976 cases. BSI kills approximate 145 patients per 1,000 cases compared to UTI which is 17 per 1,000 cases, representing 8 times difference in deadliness. However, Pneumonia (HAP) shows the largest bubble reflecting its combination of moderate frequency with 106,586 cases and high mortality of 3,968 deaths that create 69,508 DALYs, represent greatest contributor. 
+
+*Together*, pneumonia and bloodstream infections account for just 28% of cases but cause 51% of total disease burden.
+
+By contrast, the visualisation also reveals the relatively moderate impact of surgical site infections (SSI) and Clostridioides difficile (CDI) with fewer cases and lower mortality.
+
+Therefore, the data suggests that prevention strategies should not just tackle only the most frequent HAIs, but prioritise those that cause the most harm to patients and health system.
 
 ![](thumbnail.jpg)
 
