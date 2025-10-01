@@ -2,19 +2,25 @@
 title: "Critical hospital burden: Healthcare-Associated Infections in Germany"
 author: "Arisara Therdthianwong"
 date: "2024-09-29"
-categories: [healthcare, public-health, HAIs, Germany]
+categories: [analysis, health]
 ---
 
-## The Problem: When Hospitals Become Sources of Infection
-*Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection.* This is not a rare occurrence since **1 of every 25 patients** in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. In 2011, HAIs resulted in approximately **487,000 cases and claimed over 16,000 lives** (Zacher, 2019). To be exact, the burden of HAIs causes more death than from influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk. 
+![](header.png)
 
-*What’s even more shocking?* Research found that many of these infections can be prevented with basic changes in hygiene and hospital procedures.
+*Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection.*
+
+## The Problem: When Hospitals Become Sources of Infection
+Healthcare-associated infections (HAIs) are infections that acquired during hospitalisation [@who2010]. This is not a rare occurrence since **1 in 25 patients** in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. According to @zacher2019, HAIs resulted in approximately **478,222 cases and claimed over 16,245 lives** in 2011. To be exact, the burden of HAIs causes more death than from Influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk.
+
+**What’s even more shocking?** Research found that many of these infections can be prevented with basic changes in hygiene and hospital procedures.
 
 Understanding where these infections occur and which types are most dangerous is crucial for developing effective prevention strategies.
 
+---
+
 ## The Data
-### Where the data come from?
-This analysis uses data from **2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey**. The original study by Zacher et al. (2019) applied *Burden of Healthcare-Associated Infections (BHAI)* method to calculate national HAI burden.
+### Where did the data come from?
+This analysis uses data from **2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey**. The original study by @zacher2019 applied *Burden of Healthcare-Associated Infections (BHAI)* method to calculate national HAI burden.
 
 We used **Representative sample**: 46 hospitals with 9,626 patients across Germany.
 
@@ -35,7 +41,7 @@ We used **Representative sample**: 46 hospitals with 9,626 patients across Germa
 
 ### How we prepared the data
 
-For this blog post, I work with **published point estimates** from Zacher et al. (2019).
+For this blog post, I work with **published point estimates** from @zacher2019.
 
 Data preparations:
 
@@ -73,13 +79,15 @@ hais_desc <- hais_data |>
   bind_rows(hais_data |> filter(Type == "Total"))
 ```
 
+---
+
 ## Analysis
 
 ### Explore frequency of HAIs
 
 ```{r}
 #| label: tbl-hais
-#| tbl-cap: UTIs are the most frequent HAI in Germany, while HAP and BSI drive most of the overall burden.
+#| tbl-cap: UTIs are the most frequent HAI in Germany (2011), while HAP and BSI drive most of the overall burden.
 #| echo: false
 #| message: false
 #| warning: false
@@ -120,7 +128,7 @@ As shown in @tbl-hais, healthcare-associated infections (HAIs) remain a major he
 
 ```{r}
 #| label: fig-severity
-#| fig-cap: "The severity analysis: Pneumonia and Bloodstream dominates Germany infection."
+#| fig-cap: "Severity vs frequency: Pneumonia (HAP) and Bloodstream infections (BSI) dominates Germany infection death rates."
 #| echo: false
 #| message: false
 #| warning: false
@@ -170,21 +178,24 @@ Here we see that bloodstream infections (BSI) reaches nearly the same height as 
 
 By contrast, the visualisation also reveals the relatively moderate impact of surgical site infections (SSI) and Clostridioides difficile (CDI) with fewer cases and lower mortality.
 
-*Where should prevention strategies focus?* the data suggests that prevention strategies should not just tackle only the most frequent HAIs like UTI, but prioritise those that cause the most harm to patients and health system. By targeting BSI and HAP that contributes to 51% of Germany's burden, this could achieve far greater reductions in deaths and disability.
+*Where should prevention strategies focus?* the data suggests that prevention strategies should not just tackle only the most frequent HAIs like UTI, but prioritised those that cause the most harm to patients and health system. By targeting BSI and HAP that contributes to 51% of Germany's burden, this could achieve far greater reductions in deaths and disability.
 
-##Conclusion
+---
+
+## Conclusion
 
 Healthcare-associated infections (HAIs) impose a substantial burden Germany's healthcare system, with nearly 478,000 cases, over 16,000 deaths, and 249,000 DALYs annually. This analysis reveals an insight that reshaping prevention strategies is a MUST.
 
-Pneumonia and bloodstream infections should be prioritise. While urinary infections contribute the most cases, they cause far fewer deaths perinfection. This pattern suggests that prevention strategies should focus on saving lives and reducing disability, not just lowering case numbers.
+Pneumonia and bloodstream infections should be prioritise. While urinary infections contribute the most cases, they cause far fewer deaths per infection. This pattern suggests that prevention strategies should focus on saving lives and reducing disability, not just lowering case numbers.
 
-Germany's high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention more urgent. According to @ , 20-30% of HAIs are preventable through better hygiene protocols and procedures. Therefore, Germany should focus on allocating resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency and patient safety and redundant cost.
+Germany's high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention more urgent. According to @zacher2019, 20-30% of HAIs are preventable through better hygiene protocols and procedures. Therefore, Germany should focus on allocating resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency and patient safety and redundant cost.
 
-##References
+---
 
+## References
 
+::: {#refs}
+:::
 
-
-![](thumbnail.jpg)
 
 

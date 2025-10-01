@@ -56,7 +56,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -150,10 +170,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title column-body">
       <h1 class="title">Critical hospital burden: Healthcare-Associated Infections in Germany</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">healthcare</div>
-                <div class="quarto-category">public-health</div>
-                <div class="quarto-category">HAIs</div>
-                <div class="quarto-category">Germany</div>
+                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">health</div>
               </div>
                   </div>
   </div>
@@ -190,17 +208,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p><img src="header.png" class="img-fluid"></p>
+<p><em>Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection.</em></p>
 <section id="the-problem-when-hospitals-become-sources-of-infection" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-when-hospitals-become-sources-of-infection">The Problem: When Hospitals Become Sources of Infection</h2>
-<p><em>Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection.</em> This is not a rare occurrence since <strong>1 of every 25 patients</strong> in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. In 2011, HAIs resulted in approximately <strong>487,000 cases and claimed over 16,000 lives</strong> (Zacher, 2019). To be exact, the burden of HAIs causes more death than from influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk.</p>
-<p><em>What’s even more shocking?</em> Research found that many of these infections can be prevented with basic changes in hygiene and hospital procedures.</p>
+<p>Healthcare-associated infections (HAIs) are infections that acquired during hospitalisation <span class="citation" data-cites="who2010">(<a href="#ref-who2010" role="doc-biblioref">WHO, 2010</a>)</span>. This is not a rare occurrence since <strong>1 in 25 patients</strong> in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. According to <span class="citation" data-cites="zacher2019">Zacher et al. (<a href="#ref-zacher2019" role="doc-biblioref">2019</a>)</span>, HAIs resulted in approximately <strong>478,222 cases and claimed over 16,245 lives</strong> in 2011. To be exact, the burden of HAIs causes more death than from Influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk.</p>
+<p><strong>What’s even more shocking?</strong> Research found that many of these infections can be prevented with basic changes in hygiene and hospital procedures.</p>
 <p>Understanding where these infections occur and which types are most dangerous is crucial for developing effective prevention strategies.</p>
+<hr>
 </section>
 <section id="the-data" class="level2">
 <h2 class="anchored" data-anchor-id="the-data">The Data</h2>
-<section id="where-the-data-come-from" class="level3">
-<h3 class="anchored" data-anchor-id="where-the-data-come-from">Where the data come from?</h3>
-<p>This analysis uses data from <strong>2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey</strong>. The original study by Zacher et al.&nbsp;(2019) applied <em>Burden of Healthcare-Associated Infections (BHAI)</em> method to calculate national HAI burden.</p>
+<section id="where-did-the-data-come-from" class="level3">
+<h3 class="anchored" data-anchor-id="where-did-the-data-come-from">Where did the data come from?</h3>
+<p>This analysis uses data from <strong>2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey</strong>. The original study by <span class="citation" data-cites="zacher2019">Zacher et al. (<a href="#ref-zacher2019" role="doc-biblioref">2019</a>)</span> applied <em>Burden of Healthcare-Associated Infections (BHAI)</em> method to calculate national HAI burden.</p>
 <p>We used <strong>Representative sample</strong>: 46 hospitals with 9,626 patients across Germany.</p>
 </section>
 <section id="what-was-tracked" class="level3">
@@ -224,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-we-prepared-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="how-we-prepared-the-data">How we prepared the data</h3>
-<p>For this blog post, I work with <strong>published point estimates</strong> from Zacher et al.&nbsp;(2019).</p>
+<p>For this blog post, I work with <strong>published point estimates</strong> from <span class="citation" data-cites="zacher2019">Zacher et al. (<a href="#ref-zacher2019" role="doc-biblioref">2019</a>)</span>.</p>
 <p>Data preparations:</p>
 <ol type="1">
 <li><p>Selecting key variables: From full BHAI dataset, we selected cases, deaths, and DALYs of five major HAI types.</p></li>
@@ -255,6 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Cases)) <span class="sc">|&gt;</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(hais_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(Type <span class="sc">==</span> <span class="st">"Total"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<hr>
 </section>
 </section>
 <section id="analysis" class="level2">
@@ -265,27 +287,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tbl-hais" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hais-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive most of the overall burden.
+Table&nbsp;1: UTIs are the most frequent HAI in Germany (2011), while HAP and BSI drive most of the overall burden.
 </figcaption>
 <div aria-describedby="tbl-hais-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fmjtacikiy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fmjtacikiy table {
+<div id="vhzwohgbgk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vhzwohgbgk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fmjtacikiy thead, #fmjtacikiy tbody, #fmjtacikiy tfoot, #fmjtacikiy tr, #fmjtacikiy td, #fmjtacikiy th {
+#vhzwohgbgk thead, #vhzwohgbgk tbody, #vhzwohgbgk tfoot, #vhzwohgbgk tr, #vhzwohgbgk td, #vhzwohgbgk th {
   border-style: none;
 }
 
-#fmjtacikiy p {
+#vhzwohgbgk p {
   margin: 0;
   padding: 0;
 }
 
-#fmjtacikiy .gt_table {
+#vhzwohgbgk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -311,12 +333,12 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-left-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_caption {
+#vhzwohgbgk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fmjtacikiy .gt_title {
+#vhzwohgbgk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -328,7 +350,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-bottom-width: 0;
 }
 
-#fmjtacikiy .gt_subtitle {
+#vhzwohgbgk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -340,7 +362,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-top-width: 0;
 }
 
-#fmjtacikiy .gt_heading {
+#vhzwohgbgk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -352,13 +374,13 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-right-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_bottom_border {
+#vhzwohgbgk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_col_headings {
+#vhzwohgbgk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -373,7 +395,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-right-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_col_heading {
+#vhzwohgbgk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -393,7 +415,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   overflow-x: hidden;
 }
 
-#fmjtacikiy .gt_column_spanner_outer {
+#vhzwohgbgk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -405,15 +427,15 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   padding-right: 4px;
 }
 
-#fmjtacikiy .gt_column_spanner_outer:first-child {
+#vhzwohgbgk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fmjtacikiy .gt_column_spanner_outer:last-child {
+#vhzwohgbgk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fmjtacikiy .gt_column_spanner {
+#vhzwohgbgk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -425,11 +447,11 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   width: 100%;
 }
 
-#fmjtacikiy .gt_spanner_row {
+#vhzwohgbgk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fmjtacikiy .gt_group_heading {
+#vhzwohgbgk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -455,7 +477,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   text-align: left;
 }
 
-#fmjtacikiy .gt_empty_group_heading {
+#vhzwohgbgk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -470,15 +492,15 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   vertical-align: middle;
 }
 
-#fmjtacikiy .gt_from_md > :first-child {
+#vhzwohgbgk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fmjtacikiy .gt_from_md > :last-child {
+#vhzwohgbgk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fmjtacikiy .gt_row {
+#vhzwohgbgk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -497,7 +519,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   overflow-x: hidden;
 }
 
-#fmjtacikiy .gt_stub {
+#vhzwohgbgk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -510,7 +532,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   padding-right: 5px;
 }
 
-#fmjtacikiy .gt_stub_row_group {
+#vhzwohgbgk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -524,15 +546,15 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   vertical-align: top;
 }
 
-#fmjtacikiy .gt_row_group_first td {
+#vhzwohgbgk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fmjtacikiy .gt_row_group_first th {
+#vhzwohgbgk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fmjtacikiy .gt_summary_row {
+#vhzwohgbgk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -542,16 +564,16 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   padding-right: 5px;
 }
 
-#fmjtacikiy .gt_first_summary_row {
+#vhzwohgbgk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_first_summary_row.thick {
+#vhzwohgbgk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fmjtacikiy .gt_last_summary_row {
+#vhzwohgbgk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -561,7 +583,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-bottom-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_grand_summary_row {
+#vhzwohgbgk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -571,7 +593,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   padding-right: 5px;
 }
 
-#fmjtacikiy .gt_first_grand_summary_row {
+#vhzwohgbgk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -581,7 +603,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-top-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_last_grand_summary_row_top {
+#vhzwohgbgk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -591,11 +613,11 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-bottom-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_striped {
+#vhzwohgbgk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fmjtacikiy .gt_table_body {
+#vhzwohgbgk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -604,7 +626,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-bottom-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_footnotes {
+#vhzwohgbgk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -618,7 +640,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-right-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_footnote {
+#vhzwohgbgk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -627,7 +649,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   padding-right: 5px;
 }
 
-#fmjtacikiy .gt_sourcenotes {
+#vhzwohgbgk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -641,7 +663,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   border-right-color: #D3D3D3;
 }
 
-#fmjtacikiy .gt_sourcenote {
+#vhzwohgbgk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -649,72 +671,72 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
   padding-right: 5px;
 }
 
-#fmjtacikiy .gt_left {
+#vhzwohgbgk .gt_left {
   text-align: left;
 }
 
-#fmjtacikiy .gt_center {
+#vhzwohgbgk .gt_center {
   text-align: center;
 }
 
-#fmjtacikiy .gt_right {
+#vhzwohgbgk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fmjtacikiy .gt_font_normal {
+#vhzwohgbgk .gt_font_normal {
   font-weight: normal;
 }
 
-#fmjtacikiy .gt_font_bold {
+#vhzwohgbgk .gt_font_bold {
   font-weight: bold;
 }
 
-#fmjtacikiy .gt_font_italic {
+#vhzwohgbgk .gt_font_italic {
   font-style: italic;
 }
 
-#fmjtacikiy .gt_super {
+#vhzwohgbgk .gt_super {
   font-size: 65%;
 }
 
-#fmjtacikiy .gt_footnote_marks {
+#vhzwohgbgk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fmjtacikiy .gt_asterisk {
+#vhzwohgbgk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fmjtacikiy .gt_indent_1 {
+#vhzwohgbgk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fmjtacikiy .gt_indent_2 {
+#vhzwohgbgk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fmjtacikiy .gt_indent_3 {
+#vhzwohgbgk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fmjtacikiy .gt_indent_4 {
+#vhzwohgbgk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fmjtacikiy .gt_indent_5 {
+#vhzwohgbgk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fmjtacikiy .katex-display {
+#vhzwohgbgk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fmjtacikiy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vhzwohgbgk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -797,7 +819,7 @@ Table&nbsp;1: UTIs are the most frequent HAI in Germany, while HAP and BSI drive
 <img src="index_files/figure-html/fig-severity-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-severity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: The severity analysis: Pneumonia and Bloodstream dominates Germany infection.
+Figure&nbsp;1: Severity vs frequency: Pneumonia (HAP) and Bloodstream infections (BSI) dominates Germany infection death rates.
 </figcaption>
 </figure>
 </div>
@@ -807,11 +829,30 @@ Figure&nbsp;1: The severity analysis: Pneumonia and Bloodstream dominates German
 <p>Here we see that bloodstream infections (BSI) reaches nearly the same height as Urinary tract infections (UTI) despite being positioned on far left with only 26,976 cases. BSI kills approximate 145 patients per 1,000 cases compared to UTI which is 17 per 1,000 cases, representing 8 times difference in deadliness. However, Pneumonia (HAP) shows the largest bubble reflecting its combination of moderate frequency with 106,586 cases and high mortality of 3,968 deaths that create 69,508 DALYs, represent greatest contributor.</p>
 <p><em>Together</em>, pneumonia and bloodstream infections account for just 28% of cases but cause 51% of total disease burden.</p>
 <p>By contrast, the visualisation also reveals the relatively moderate impact of surgical site infections (SSI) and Clostridioides difficile (CDI) with fewer cases and lower mortality.</p>
-<p>Therefore, the data suggests that prevention strategies should not just tackle only the most frequent HAIs, but prioritise those that cause the most harm to patients and health system.</p>
-<p><img src="thumbnail.jpg" class="img-fluid"></p>
-
-
+<p><em>Where should prevention strategies focus?</em> the data suggests that prevention strategies should not just tackle only the most frequent HAIs like UTI, but prioritised those that cause the most harm to patients and health system. By targeting BSI and HAP that contributes to 51% of Germany’s burden, this could achieve far greater reductions in deaths and disability.</p>
+<hr>
 </section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Healthcare-associated infections (HAIs) impose a substantial burden Germany’s healthcare system, with nearly 478,000 cases, over 16,000 deaths, and 249,000 DALYs annually. This analysis reveals an insight that reshaping prevention strategies is a MUST.</p>
+<p>Pneumonia and bloodstream infections should be prioritise. While urinary infections contribute the most cases, they cause far fewer deaths perinfection. This pattern suggests that prevention strategies should focus on saving lives and reducing disability, not just lowering case numbers.</p>
+<p>Germany’s high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention more urgent. According to <span class="citation" data-cites="zacher2019">Zacher et al. (<a href="#ref-zacher2019" role="doc-biblioref">2019</a>)</span>, 20-30% of HAIs are preventable through better hygiene protocols and procedures. Therefore, Germany should focus on allocating resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency and patient safety and redundant cost.</p>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-who2010" class="csl-entry" role="listitem">
+WHO. (2010). <em>The burden of healthcare-associated infection worldwide</em>. <a href="https://www.who.int/news-room/feature-stories/detail/the-
+burden-of-health-care-associated-infection-worldwide">https://www.who.int/news-room/feature-stories/detail/the- burden-of-health-care-associated-infection-worldwide</a>
+</div>
+<div id="ref-zacher2019" class="csl-entry" role="listitem">
+Zacher, B., Haller, S., Willrich, N., Walter, J., Sin, M. A., Cassini, A., Plachouras, D., Suetens, C., Behnke, M., Gastmeier, P., Wieler, L. H., &amp; Eckmanns, T. (2019). Application of a new methodology and r package reveals a high burden of healthcare-associated infections (HAI) in germany compared to the average in the european union/european economic area, 2011 to 2012. <em>Eurosurveillance</em>, <em>24</em>(46). <a href="https://doi.org/10.2807/1560-7917.es.2019.24.46.1900135">https://doi.org/10.2807/1560-7917.es.2019.24.46.1900135</a>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
