@@ -170,7 +170,20 @@ Here we see that bloodstream infections (BSI) reaches nearly the same height as 
 
 By contrast, the visualisation also reveals the relatively moderate impact of surgical site infections (SSI) and Clostridioides difficile (CDI) with fewer cases and lower mortality.
 
-Therefore, the data suggests that prevention strategies should not just tackle only the most frequent HAIs, but prioritise those that cause the most harm to patients and health system.
+*Where should prevention strategies focus?* the data suggests that prevention strategies should not just tackle only the most frequent HAIs like UTI, but prioritise those that cause the most harm to patients and health system. By targeting BSI and HAP that contributes to 51% of Germany's burden, this could achieve far greater reductions in deaths and disability.
+
+##Conclusion
+
+Healthcare-associated infections (HAIs) impose a substantial burden Germany's healthcare system, with nearly 478,000 cases, over 16,000 deaths, and 249,000 DALYs annually. This analysis reveals an insight that reshaping prevention strategies is a MUST.
+
+Pneumonia and bloodstream infections should be prioritise. While urinary infections contribute the most cases, they cause far fewer deaths perinfection. This pattern suggests that prevention strategies should focus on saving lives and reducing disability, not just lowering case numbers.
+
+Germany's high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention more urgent. According to @ , 20-30% of HAIs are preventable through better hygiene protocols and procedures. Therefore, Germany should focus on allocating resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency and patient safety and redundant cost.
+
+##References
+
+
+
 
 ![](thumbnail.jpg)
 
