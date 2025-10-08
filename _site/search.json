@@ -7,18 +7,18 @@
     "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
   },
   {
+    "objectID": "about.html#arisara-therdthianwong",
+    "href": "about.html#arisara-therdthianwong",
+    "title": "About me",
+    "section": "",
+    "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
     "section": "",
     "text": "Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ETC5523 Blog Assessment",
-    "section": "",
-    "text": "Critical hospital burden: Healthcare-Associated Infections in Germany\n\n\n\n\n\n\nanalysis\n\n\nhealth\n\n\n\n\n\n\n\n\n\nSep 29, 2024\n\n\nArisara Therdthianwong\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html#the-problem-when-hospitals-become-sources-of-infection",
@@ -56,17 +56,10 @@
     "text": "References\n\n\nWHO. (2010). The burden of healthcare-associated infection worldwide. https://www.who.int/news-room/feature-stories/detail/the- burden-of-health-care-associated-infection-worldwide\n\n\nZacher, B., Haller, S., Willrich, N., Walter, J., Sin, M. A., Cassini, A., Plachouras, D., Suetens, C., Behnke, M., Gastmeier, P., Wieler, L. H., & Eckmanns, T. (2019). Application of a new methodology and r package reveals a high burden of healthcare-associated infections (HAI) in germany compared to the average in the european union/european economic area, 2011 to 2012. Eurosurveillance, 24(46). https://doi.org/10.2807/1560-7917.es.2019.24.46.1900135"
   },
   {
-    "objectID": "posts/welcome/index.html#tldr",
-    "href": "posts/welcome/index.html#tldr",
-    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ETC5523 Blog Assessment",
     "section": "",
-    "text": "Germany faces nearly 480,000 healthcare-associated infections annually, causing over 16,000 deaths. The key insight: the most common infections aren’t the most deadly. Bloodstream infections kill at 8× the rate of urinary tract infections despite being far rarer. Prevention should target high-severity infections (pneumonia and bloodstream) rather than just the most frequent ones."
-  },
-  {
-    "objectID": "about.html#arisara-therdthianwong",
-    "href": "about.html#arisara-therdthianwong",
-    "title": "About me",
-    "section": "",
-    "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
+    "text": "Critical hospital burden: Healthcare-Associated Infections in Germany\n\n\n\n\n\n\nanalysis\n\n\nhealth\n\n\n\n\n\n\n\n\n\nSep 29, 2024\n\n\nArisara Therdthianwong\n\n\n\n\n\n\nNo matching items"
   }
 ]
