@@ -1,0 +1,104 @@
+/* css styles */
+
+:root {
+  --light-blue: #8ECAE6;
+  --medium-blue: #219EBC;
+  --dark-blue: #023047;
+  --yellow-orange: #FFB703;
+  --bright-orange: #e75414;
+}
+
+.navbar-dark, .quarto-title-banner {
+  background-color: var(--bright-orange);
+}
+
+body {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--dark-blue);
+  font-family: "Ubuntu", Sans-Serif;
+  background-color: #FFF6EC !important;
+}
+
+p {
+  text-align: justify;
+  margin-bottom: 1.2rem !important;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFC88D !important;
+
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #219EBC;
+  color: #023047;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+strong, b {
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+.citation,
+a.citation,
+.csl-entry a {
+  color: var(--medium-blue);
+  font-weight: 500;
+}
+
+a {
+  color: var(--medium-blue);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--dark-blue);
+  text-decoration: underline;
+}
+
+pre {
+  background-color: #ffffff !important;
+  border: 1px solid var(--yellow-orange) !important;
+  padding: 1rem !important;
+}
+
+table {
+  margin: 2rem;
+  box-shadow: 0 2px 12px rgba(2, 48, 70, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+figure {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid var(--yellow-orange);
+}
+
+#refs .csl-entry {
+  margin-bottom: 1rem;
+}
+
+figcaption,
+.figure-caption {
+  text-align: center !important;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-style: italic;
+}

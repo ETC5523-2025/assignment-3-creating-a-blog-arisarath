@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
+  },
+  {
+    "objectID": "about.html#arisara-therdthianwong",
+    "href": "about.html#arisara-therdthianwong",
+    "title": "About me",
+    "section": "",
+    "text": "I am a Master’s student in Business, specializing Data analytics at Monash University. I previously worked as a Supply Chain Officer in Thailand for three years, where I managed inventory, improved warehouse efficiency, and support procurement with suppliers. Currently, I am developing mu skills in communicating data efficiently, through blog building. My first blog post explores the burden of Healthcare-associated infections in Germany. I am an enthusiastic leaner with passion to pursue new challenges in life. I enjoy collaborating in teams with great vibes and bring a foundation in programming to support problem-solving and data analysis."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "section": "",
+    "text": "Everybody goes to hospital to receive a cure. What if you went there for treatment but ended up with another infection."
+  },
+  {
+    "objectID": "posts/welcome/index.html#the-problem-when-hospitals-become-sources-of-infection",
+    "href": "posts/welcome/index.html#the-problem-when-hospitals-become-sources-of-infection",
+    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "section": "The Problem: When Hospitals Become Sources of Infection",
+    "text": "The Problem: When Hospitals Become Sources of Infection\nHealthcare-associated infections (HAIs) are infections that acquired during hospitalisation (WHO, 2010). This is not a rare occurrence since 1 in 25 patients in Germany were affected. These healthcare-associated infections (HAIs) are a silent crisis that strikes tens of thousands of people every year. According to Zacher et al. (2019), HAIs resulted in approximately 478,222 cases and claimed over 16,245 lives in 2011. To be exact, the burden of HAIs causes more death than from Influenza, Salmonella, Hepatitis B, and Measles combined. Despite Germany’s superb hospitals, the highest number of hospital beds and hospitalization rates exposed Germany to risk.\nWhat’s even more shocking? Research found that many of these infections can be prevented with basic changes in hygiene and hospital procedures.\nUnderstanding where these infections occur and which types are most dangerous is crucial for developing effective prevention strategies."
+  },
+  {
+    "objectID": "posts/welcome/index.html#the-data",
+    "href": "posts/welcome/index.html#the-data",
+    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "section": "The Data",
+    "text": "The Data\n\nWhere did the data come from?\nThis analysis uses data from 2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey. The original study by Zacher et al. (2019) applied Burden of Healthcare-Associated Infections (BHAI) method to calculate national HAI burden.\nWe used Representative sample: 46 hospitals with 9,626 patients across Germany.\n\n\nWhat was tracked?\n5 major types of HAIs:\n\nHospital-acquired pneumonia (HAP)\nSurgical site infections (SSI)\nBloodstream infections (BSI)\nUrinary tract infections (UTI)\nClostridioides difficile (CDI)\n\n\n\nWhat was measured?\n\nTotal number of cases\nDeaths linked to infection\nDisability-adjusted life years (DALYs), combining years lost to disability (YLDs) and years lost to life (YLLs)\n\n\n\nHow we prepared the data\nFor this blog post, I work with published point estimates from Zacher et al. (2019).\nData preparations:\n\nSelecting key variables: From full BHAI dataset, we selected cases, deaths, and DALYs of five major HAI types.\nSorting data: Ordering data in descending based on case frequency to highlight the most common infections with total number at the bottom.\nTidy data: Structured the published estimates into suitable visualisation.\n\n\n# Load packages\nlibrary(gt)\nlibrary(dplyr)\n\n# Create data frame\nhais_data &lt;- data.frame(\n  Type = c(\"Pneumonia (HAP)\",\n                \"Surgical site (SSI)\",\n                \"Bloodstream (BSI)\",\n                \"Urinary tract (UTI)\",\n                \"Clostridioides difficile (CDI)\",\n                \"Total\"),\n  Cases = c(106586,93222,26976,214150,36002,478222),\n  Deaths = c(3968,2328,3905,3664,1917,16245),\n  DALYs = c(69508,28842,58350,66701,20890,248920)\n)\n\n# Sorting data\nhais_desc &lt;- hais_data |&gt;\n  filter(Type != \"Total\") |&gt;\n  arrange(desc(Cases)) |&gt;\n  bind_rows(hais_data |&gt; filter(Type == \"Total\"))"
+  },
+  {
+    "objectID": "posts/welcome/index.html#analysis",
+    "href": "posts/welcome/index.html#analysis",
+    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "section": "Analysis",
+    "text": "Analysis\n\nExplore frequency of HAIs\n\n\n\n\nTable 1: UTIs are the most frequent HAI in Germany (2011), while HAP and BSI drive most of the overall burden.\n\n\n\n\n\n\n\n\n\nAnnual burden of five HAIs in Germany\n\n\nPoint estimates only\n\n\nType of HAI\nNumber of Cases\nNumber of Deaths\nNumber of DALYs\n\n\n\n\nUrinary tract (UTI)\n214,150\n3,664\n66,701\n\n\nPneumonia (HAP)\n106,586\n3,968\n69,508\n\n\nSurgical site (SSI)\n93,222\n2,328\n28,842\n\n\nClostridioides difficile (CDI)\n36,002\n1,917\n20,890\n\n\nBloodstream (BSI)\n26,976\n3,905\n58,350\n\n\nTotal\n478,222\n16,245\n248,920\n\n\n\nSource: 2011 European Centre for Disease Prevention and Control (ECDC) Point Prevalence Survey\n\n\n\n\n\n\n\n\n\n\n\nAs shown in Table 1, healthcare-associated infections (HAIs) remain a major health concern in Germany. In 2011, there were 478,222 cases resulting in 16,245 deaths and 248,920 DALYs. Urinary tract infections (UTI) were the most common HAI with 214,150 cases, accounting for 45% of all infections. Pneumonia (HAP) followed with 106,586 cases, while bloodstream infections (BSI) were rarest with 26,976 cases.\nHowever, these only show the number of occurrence not the critical severity.\n\n\nSo what’s HAIs severity?\n\n\n\n\n\n\n\n\nFigure 1: Severity vs frequency: Pneumonia (HAP) and Bloodstream infections (BSI) dominates Germany infection death rates.\n\n\n\n\n\nFrequency alone doesn’t tell the whole story.\nFigure 1 illustrates this severity patterns through three dimensions: Number of Cases (x-axis), Deaths (y-axis), and DALYs (bubble size).\nHere we see that bloodstream infections (BSI) reach nearly the same height as urinary tract infections (UTI) despite being positioned on far left with only 26,976 cases. BSI kills approximately 145 patients per 1,000 cases compared to UTI which is 17 per 1,000 cases, representing about 8 times greater deadliness. Meanwhile, pneumonia (HAP) shows the largest bubble, reflecting its combination of moderate frequency with 106,586 cases and high mortality of 3,968 deaths which create 69,508 DALYs, making it the greatest contributor.\nTogether, pneumonia (HAP) and bloodstream infections (BSI) account for just 28% of cases but cause 51% of Germany’s total disease burden.\nBy contrast, the visualisation also reveals the relatively moderate impact of surgical site infections (SSI) and Clostridioides difficile (CDI) with fewer cases and lower mortality.\n\n\nWhere should prevention strategies focus?\nThe data suggests that prevention strategies should not focus solely the most frequent HAIs, such as UTI, but instead prioritise those causing the greatest harm to patients and health system. By targeting HAP and BSI that contributes over half of Germany’s HAI burden, this could achieve far greater reductions in deaths and disability."
+  },
+  {
+    "objectID": "posts/welcome/index.html#conclusion",
+    "href": "posts/welcome/index.html#conclusion",
+    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "section": "Conclusion",
+    "text": "Conclusion\nHealthcare-associated infections (HAIs) impose a substantial burden on Germany’s healthcare system, with nearly 478,000 cases, over 16,000 deaths, and 249,000 DALYs annually. This analysis reveals an insight that helps to reshape national prevention strategies.\nPneumonia (HAP) and bloodstream infections (BSI) should be top priorities. While urinary infections (UTI) contribute the most cases, they cause far fewer deaths per infection. This pattern suggests that focusing on saving lives and reducing disability yields more impact than merely lowering case numbers.\nGermany’s high hospitalisation rates and large number of beds create more opportunities for infections to spread, making prevention even more urgent. According to Zacher et al. (2019), 20-30% of HAIs are preventable through better hygiene protocols and procedures.\nTherefore, Germany should concentrate resources on the infections that caused the most harm. By implementing strict hygiene protocols, improving data collection, and reducing avoidable hospital stays. These practices can potentially save thousands of lives annually while improving healthcare efficiency, patient safety, and resource use."
+  },
+  {
+    "objectID": "posts/welcome/index.html#references",
+    "href": "posts/welcome/index.html#references",
+    "title": "Critical hospital burden: Healthcare-Associated Infections in Germany",
+    "section": "References",
+    "text": "References\n\n\nWHO. (2010). The burden of healthcare-associated infection worldwide. https://www.who.int/news-room/feature-stories/detail/the- burden-of-health-care-associated-infection-worldwide\n\n\nZacher, B., Haller, S., Willrich, N., Walter, J., Sin, M. A., Cassini, A., Plachouras, D., Suetens, C., Behnke, M., Gastmeier, P., Wieler, L. H., & Eckmanns, T. (2019). Application of a new methodology and r package reveals a high burden of healthcare-associated infections (HAI) in germany compared to the average in the european union/european economic area, 2011 to 2012. Eurosurveillance, 24(46). https://doi.org/10.2807/1560-7917.es.2019.24.46.1900135"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ETC5523 Blog Assessment",
+    "section": "",
+    "text": "Critical hospital burden: Healthcare-Associated Infections in Germany\n\n\n\n\n\n\nanalysis\n\n\nhealth\n\n\n\n\n\n\n\n\n\nSep 29, 2024\n\n\nArisara Therdthianwong\n\n\n\n\n\n\nNo matching items"
+  }
+]
