@@ -9,7 +9,7 @@ about:
       href: https://github.com/arisarath
     - icon: facebook
       text: Facebook
-      href: https://www.facebook.com/share/19knrycbiK/?mibextid=wwXIfr
+      href: https://www.facebook.com/aristoryy
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/arisara-th/
